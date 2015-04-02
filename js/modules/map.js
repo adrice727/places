@@ -43,6 +43,7 @@ var Map = (function(){
   function buildMap(){
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     service = new google.maps.places.PlacesService(map);
+    //service loaded here
   }
 
   $('#search').on('click', function(){
@@ -123,8 +124,8 @@ var Map = (function(){
     var place = currentResults[id];
     var placeLocation = place.geometry.location
     var location = new google.maps.LatLng(placeLocation.k, placeLocation.D);
-    if ( currentLocationMarker ){ currentLocationMarker.setMap(null); }
-    var currentLocationMarker = new google.maps.Marker({
+    if ( !$.isEmptyObject(currentLocationMarker) ){ currentLocationMarker.setMap(null); }
+    currentLocationMarker = new google.maps.Marker({
       position: location,
       map: map,
       title: place.name,
