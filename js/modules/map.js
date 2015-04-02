@@ -1,7 +1,18 @@
-/*
- * Map Setup and Initialization
- */
+
 var Map = (function(){
+
+  //Set up and initialize map
+
+  var mapOptions, map, service, currentLocationMarker;
+  
+  // Define map options
+  var mapOptions = {
+    minZoom:12,
+    zoom: 16,
+    maxZoom: 19,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    mapTypeControl: false
+  };
 
   var gMap = function(){};
 
@@ -22,30 +33,19 @@ var Map = (function(){
     }
   }
 
-  var map, currentLocationMarker;
-  
-  // Define map options
-  var mapOptions = {
-    minZoom:12,
-    zoom: 16,
-    maxZoom: 19,
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
-    mapTypeControl: false
-  };
-
   function setDefaultLocation(){
     mapOptions.center = new google.maps.LatLng(37.79496, -122.394358);
     buildMap();
   }
 
-  var service;
-
   function buildMap(){
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     service = new google.maps.places.PlacesService(map);
-    //service loaded here
+    $('.search-box-container').spin(false);
+    $('.input-container').show();
   }
 
+  // Set event handlers
   $('#search').on('click', function(){
     var searchText = getUserInput();
     if ( searchText.length > 0 ) {
@@ -61,6 +61,16 @@ var Map = (function(){
     }
   });
 
+  $('#places-list').on('click', 'li', function(){
+    var id = $(this).attr('data-id');
+    viewPlaceOnMap(id);
+  });
+
+  $('.hide-map').on('click', function(){
+    toggleMap(false);
+  });
+
+  // Search and display results
   function getUserInput(){
     return $('.search-box-container input').val();
   }
@@ -78,18 +88,12 @@ var Map = (function(){
     service.textSearch(request, processSearchResults);
   }
 
-  function toggleMap(){
-    $('.map-container').toggle();
-  }
-
-
-  var currentResults = {};
-  var currentMarkers;
-  var markerDataMap = {};
+  var currentResults;
   function processSearchResults(results){
     currentResults = {};
     if ( google.maps.places.PlacesServiceStatus.OK ) {
-      for ( var i = 0; i < 10; i++ ) {
+      for ( var i = 0; i < results.length; i++ ) {
+        if ( i === 10 ) { break; }
         currentResults[results[i].id] = results[i];
       }
       displayResults();
@@ -98,9 +102,18 @@ var Map = (function(){
 
   function displayResults(){
     $('#places-list').empty();
+    if ( $.isEmptyObject(currentResults) ) {
+      $('#places-list').append('<li class="no-results"><div>No results found</div></li>'); 
+      return;
+    } 
     for ( var key in currentResults ) {
       var place = currentResults[key];
-      var imgUrl = place.photos[0].getUrl({'maxWidth': 90, 'maxHeight': 90 });
+      var imgUrl;
+      if ( place.photos ) {
+        imgUrl = place.photos[0].getUrl({'maxWidth': 90, 'maxHeight': 90 });
+      } else {
+        imgUrl = 'http://goo.gl/j5Apls';  //default image
+      }
       var item = '<li data-id="' + place.id + '">\
                   <div class="pic-container"><img src="' + imgUrl +'"></img></div>\
                   <div class="place-info">\
@@ -114,11 +127,6 @@ var Map = (function(){
       if ( !mapHidden ) { $('#places-list li').addClass('collapse'); }
     }
   }
-
-  $('#places-list').on('click', 'li', function(){
-    var id = $(this).attr('data-id');
-    viewPlaceOnMap(id);
-  })
 
   function viewPlaceOnMap(id) {
     var place = currentResults[id];
@@ -134,10 +142,6 @@ var Map = (function(){
     map.panTo(location);
     toggleMap(true);
   }
-
-  $('.hide-map').on('click', function(){
-    toggleMap(false);
-  });
 
   var mapHidden = true;
   function toggleMap(show){
@@ -155,5 +159,6 @@ var Map = (function(){
       mapHidden = true;
     }
   }
+
   return gMap;
 })();

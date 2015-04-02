@@ -31,6 +31,10 @@ button {
   padding: 5px 0 5px 15px;
 }
 
+.input-container {
+  display: none;
+}
+
 .search-box-container {
   text-align: center;
 }
@@ -79,7 +83,7 @@ button {
   padding-left: 0;
 }
 
-#places-list li {
+li {
   width: 40%;
   margin: 0 auto;
   text-align: left;
@@ -91,21 +95,36 @@ button {
   display: flex;
 }
 
-#places-list li.collapse {
+li.collapse {
   width: 100%;
   z-index: initial;
   margin-left: 10px;
 }
 
-#places-list li:hover {
+li:hover {
   background-color: #FEF3E5;
   cursor: pointer;
 }
 
-#places-list li img {
+li img {
   height: 90px;
   width: 90px;
 }
+
+li.no-results {
+  cursor: default;
+}
+
+li.no-results:hover {
+  background: none;
+}
+
+.no-results div {
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+}
+
 
 .pic-container {
   width: 20%;
@@ -151,61 +170,6 @@ button.view-map {
   margin-left: 10px;
 }
 
-
-.truck-info {
-  width: 30%;
-  height: 565px;
-  padding: 50px 15px;
-}
-
-.truck-info div {
-  font-size: 20px;
-}
-
-.truck-info .truck-name {
-  font-size: 34px;
-  color: #F03D70
-}
-
-.truck-items ul {
-  margin-top: 5px;
-  list-style-type: none;
-}
-
-.truck-items li {
-  position: relative;
-}
-
-.truck-items li:before {
-  content: '';
-  position: absolute;
-  background: url(../img/utensils.png);
-  background-size: contain;
-  top: 3px;
-  left: -25px;
-  height: 20px;
-  width: 20px;
-}
-
-.no-truck-selected {
-  position: relative;
-  top: 35%;
-}
-
-.no-truck-selected:after {
-  content: '';
-  background: url(../img/food-truck-large.png);
-  position: absolute;
-  height: 125px;
-  width: 125px;
-  text-align: center;
-  background-size: contain;
-  left: 50%;
-  -ms-transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-}
-
 .hidden {
   visibility: hidden;
 }
@@ -240,13 +204,4 @@ button.view-map {
   font-family: FontAwesome;
   margin-left: 10px;
   font-size: 16px;
-}
-
-.controls {
-  font-family: 'Architects Daughter', cursive;
-  font-size: 18px;
-  height: 30px;
-  width: 350px;
-  padding-left: 10px;
-  margin-top: 25px;
 }
