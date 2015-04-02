@@ -126,20 +126,17 @@ $(function(){
     toggleMap(true);
   }
 
-  var mapHidden = true;
   function toggleMap(show){
     if ( show ) {
       $('.map-container').removeClass('map-container-hide');
       $('.search-results-container').removeClass('results-container-full');
       $('.search-results-container').addClass('results-container-side');
       $('#places-list li').addClass('collapse');
-      mapHidden = false;
     } else {
       $('.map-container').addClass('map-container-hide');
       $('.search-results-container').removeClass('results-container-side');
       $('.search-results-container').addClass('results-container-full');
       $('#places-list li').removeClass('collapse');
-      mapHidden = true;
     }
   }
 });

@@ -10,7 +10,7 @@ var MapService = (function(){
     var deferred = $.Deferred();
     mapOptions = options.settings;
     setLocation()
-    .then(buildMap)
+    .then(createMap)
     .then(function(){
       deferred.resolve();
     });
@@ -55,7 +55,7 @@ var MapService = (function(){
     return deferred.resolve();
   }
 
-  function buildMap(){
+  function createMap(){
     var deferred = $.Deferred();
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
     service = new google.maps.places.PlacesService(map);
