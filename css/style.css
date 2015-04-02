@@ -1,0 +1,252 @@
+body {
+  margin: 0;
+  font-family: 'Architects Daughter', cursive;
+  color: #24353C
+}
+
+h2, h3 {
+  text-align: center;
+  margin: 10px 0;
+  color: #24353C
+}
+
+button {
+  color: #FFFFFF;
+  background: #F1A540;
+  height: 30px;
+  width: 200px;
+  font-family: 'Architects Daughter', cursive;
+  font-size: 20px;
+  border: none;
+  border-radius: 3px;
+}
+
+.title-bar {
+  background: #F1A540;
+  color: #FFFFFF;
+}
+
+.title-bar h1 {
+  margin: 0;
+  padding: 5px 0 5px 15px;
+}
+
+.search-box-container {
+  text-align: center;
+}
+
+.container {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px;
+}
+
+.search-container {
+  text-align: center;
+  padding-top: 100px;
+  margin: 0 auto;
+}
+
+#search-input {
+  display: block;
+  font-family: 'Architects Daughter', cursive;
+  font-size: 20px;
+  width: 350px;
+  margin: 20px auto;
+  padding: 0 10px;
+}
+
+.search-results-container {
+  position: absolute;
+  top: 175px;
+  z-index: 1000;
+}
+
+.results-container-full {
+  width: 100%;
+}
+
+.results-container-side {
+  width: 50%;
+}
+
+#places-list {
+  width: 100%;
+  margin: 0 auto;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#places-list li {
+  width: 40%;
+  margin: 0 auto;
+  text-align: left;
+  position: relative;
+  padding: 20px 10px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#places-list li.collapse {
+  width: 100%;
+  z-index: initial;
+  margin-left: 10px;
+}
+
+#places-list li:hover {
+  background-color: #FEF3E5;
+  cursor: pointer;
+}
+
+#places-list li img {
+  height: 90px;
+  width: 90px;
+}
+
+.pic-container {
+  width: 20%;
+}
+
+.place-info {
+  font-size: 20px;
+  width: 80%;
+}
+
+.place-info .place-name {
+  font-size: 24px;
+}
+
+.place-address i {
+  font-size: 24px;
+  margin-left: 10px;
+}
+
+.place-rating:after {
+  content: "\f005";
+  font-family: FontAwesome;
+  margin-left: 5px;
+  font-size: 16px;
+}
+
+button.view-map {
+  height: 40px;
+  width: 200px;
+  position: absolute;
+  right: 100px;
+  top: 40px;
+
+}
+
+.view-map:after {
+  content: "\f041";
+  font-family: FontAwesome;
+  color: #FFFFFF;
+  font-size: 24px;
+  position: relative;
+  top: 5px;
+  margin-left: 10px;
+}
+
+
+.truck-info {
+  width: 30%;
+  height: 565px;
+  padding: 50px 15px;
+}
+
+.truck-info div {
+  font-size: 20px;
+}
+
+.truck-info .truck-name {
+  font-size: 34px;
+  color: #F03D70
+}
+
+.truck-items ul {
+  margin-top: 5px;
+  list-style-type: none;
+}
+
+.truck-items li {
+  position: relative;
+}
+
+.truck-items li:before {
+  content: '';
+  position: absolute;
+  background: url(../img/utensils.png);
+  background-size: contain;
+  top: 3px;
+  left: -25px;
+  height: 20px;
+  width: 20px;
+}
+
+.no-truck-selected {
+  position: relative;
+  top: 35%;
+}
+
+.no-truck-selected:after {
+  content: '';
+  background: url(../img/food-truck-large.png);
+  position: absolute;
+  height: 125px;
+  width: 125px;
+  text-align: center;
+  background-size: contain;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.map-container {
+  height: 500px;
+  position: fixed;
+  right: 10px;
+  top: 175px;
+  width: 40%;
+}
+
+.map-container-hide {
+  opacity: 0;
+}
+
+.map-container-display {
+  opacity: 1;
+}
+
+.hide-map {
+  background: #F14040;
+  margin-bottom: 15px;
+  position: absolute;
+  z-index: 10;
+  right: 0;
+  cursor: pointer;
+}
+
+.hide-map:after {
+  content: "\f00d";
+  font-family: FontAwesome;
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+.controls {
+  font-family: 'Architects Daughter', cursive;
+  font-size: 18px;
+  height: 30px;
+  width: 350px;
+  padding-left: 10px;
+  margin-top: 25px;
+}

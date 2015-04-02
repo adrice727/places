@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link href='http://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link href="bower_components/fontawesome/css/font-awesome.min.css" rel="stylesheet" type='text/css'>
+
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+    <title>places</title>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyB-q8g0jpS1Hg5SRAPZ2hx9zusghBM63Dc&sensor=false&libraries=places"></script>
+
+</head>
+  <body>
+
+    <div class="title-bar">
+        <h1>places</h1>
+    </div>
+
+    <div class="search-box-container">
+        <input id="search-input" type="text" placeholder="I'm looking for . . .">
+        <button id="search">Search</button>
+    </div>
+
+    <div class="search-results-container results-container-full">
+        <ul id="places-list"></ul>
+    </div>
+    
+    <div class="map-container map-container-hide">
+        <button class="hide-map">Hide Map</button>
+        <div id="map-canvas" class="" style="width: 100%; height: 100%"></div>
+    </div>
+
+    <!-- Bower Components -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/underscore/underscore-min.js"></script>
+
+    <!-- Scripts -->
+    <script src="js/modules/map.js"></script>
+    <script src="js/app.js"></script>
+
+  </body>
+</html>
