@@ -1,5 +1,6 @@
 #places
 
 This is a simple search app that uses the Google Maps/Places API.  Search results are
-biased toward your current location.  If the app is served by a location server, your current
-location will be used.  Otherwise, downtown SF is used as a the default location.
+biased towards the user's current location.  In order for geolocation to work, the app 
+needs to be served by a local server. Otherwise, Market and Embarcadero is used as the 
+default location.
